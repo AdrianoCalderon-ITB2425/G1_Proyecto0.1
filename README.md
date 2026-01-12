@@ -1,83 +1,251 @@
-# G1_Proyecto0.1
+# Proyecto 0.1 - Desplegament d'aplicació Extagram
 
-**Proyecto de Administración de Sistemas Informáticos en Red**
+## Información del Proyecto
 
----
-
-## ℹ️ Información del Proyecto
-
-* **Módulo:** M0379  
-* **Grupo:** G1  
-* **Duración:** 6 semanas  (15/12/25 - 10/02/26)
-* **Sprints:** 3 sprints de 10h cada uno
+**Módulo:** 0379 - Projecte intermodular d'administració de sistemes informàtics en xarxa  
+**Actividad:** Pràctica P0.1 - Desplegament d'aplicació extagram  
+**Repositorio:** [G1_Proyecto0.1](https://github.com/AdrianoCalderon-ITB2425/G1_Proyecto0.1)  
+**Documentación:** [Google Docs](https://docs.google.com/document/d/1THLl41WrUCbAfqNdsbIqzLCdOVsk8ueJG0qNdfdMLiY/edit?tab=t.0#heading=h.jzzouqwst4le)
 
 ---
 
-## 🎯 Objetivo
+## Credenciales
 
-Desplegar una infraestructura completa para la aplicación multicapa **extagram**, que incluya:
-
-* Servidor web (NGINX)
-* Balanceo de carga
-* Servicios PHP-FPM
-* Almacenamiento de imágenes (en carpeta y en base de datos)
-* Base de datos (MySQL)
-* Segmentación de servicios en contenedores Docker
-* Documentación y control de versiones en GitHub
-
-El objetivo principal es simular un entorno real de empresa, aplicando buenas prácticas de segmentación de servicios, alta disponibilidad y despliegue automatizado.
+**Usuario:** `bchecker`  
+**Contraseña:** `bchecker121`
 
 ---
 
-## 👥 Equipo
+## Índice
 
-* Carlos Rodríguez  
-* Cesc Martínez  
-* Jordi Eduard  
-* Adriano Calderón  
-
----
-
-## 🏗️ Arquitectura y Justificación
-
-La infraestructura se ha diseñado con una arquitectura distribuida basada en contenedores Docker, segmentando los servicios para garantizar disponibilidad, escalabilidad y facilidad de mantenimiento.
-
-**Componentes principales:**
-
-* **S1 – nginx:alpine:** Proxy inverso y balanceador de carga.
-* **S2 y S3 – php:fpm:** Servidores de aplicación para la lógica de extagram.php.
-* **S4 – php:fpm:** Servicio para la subida de imágenes (upload.php).
-* **S5 – nginx:alpine:** Servidor de archivos estáticos (imágenes).
-* **S6 – nginx:alpine:** Servidor de archivos estáticos (CSS y SVG).
-* **S7 – mysql:** Base de datos para la aplicación y almacenamiento alternativo de imágenes.
-
-### 🔹 Justificación de la Arquitectura
-
-1. **Alta disponibilidad:** Balanceo de carga entre S2 y S3.
-2. **Escalabilidad:** Servicios desacoplados y fácilmente replicables.
-3. **Seguridad:** Separación de servicios dinámicos y estáticos.
-4. **Automatización:** Uso de Docker para facilitar el despliegue y la gestión.
-
-> ⚠️ Esta arquitectura permite simular la operación de una aplicación real en producción, facilitando la práctica de administración, despliegue y documentación de servicios.
+1. [Consideraciones Previas](#consideraciones-previas)
+2. [Objetivo del Proyecto](#objetivo-del-proyecto)
+3. [Arquitectura del Sistema](#arquitectura-del-sistema)
+4. [Análisis Técnico](#análisis-técnico)
+5. [Planificación de Sprints](#planificación-de-sprints)
+6. [Decisiones Tecnológicas](#decisiones-tecnológicas)
+7. [Estructura del Repositorio](#estructura-del-repositorio)
+8. [Documentación Técnica](#documentación-técnica)
+9. [Anexos](#anexos)
 
 ---
 
-## 🖼️ Diagrama de la Topología
+## Consideraciones Previas
 
-El diagrama refleja la arquitectura seleccionada, con los servicios distribuidos en contenedores y comunicados en red interna Docker.  
-*(Incluye aquí tu diagrama en `/docs/arquitectura.md` o como imagen en `/imagenes/`)*
+Cada miembro del equipo es responsable de la **totalidad del contenido del proyecto**, independientemente de quién haya realizado cada parte. Todos los miembros deben:
+
+- Conocer todas las partes del proyecto
+- Defender su contenido mediante preguntas del profesorado
+- Ser responsables de la custodia de la totalidad del proyecto
+- Tener siempre acceso al proyecto y trabajar en equipo
+
+### Capacidades Clave del Equipo
+
+Durante la realización del proyecto se valoran y desarrollan las siguientes capacidades:
+
+1. **Comunicación** - Compartir ideas, dar y recibir feedback, mantener informado al equipo
+2. **Trabajo en equipo** - Colaborar, respetar opiniones diversas y contribuir al bien común
+3. **Resolución de problemas** - Identificar problemas, analizar situaciones y encontrar soluciones
+4. **Gestión del tiempo** - Organizar y priorizar tareas para cumplir con los plazos
+5. **Liderazgo** - Guiar y motivar a otros, asumir responsabilidades
+6. **Adaptabilidad** - Ajustarse a cambios y nuevas situaciones
+7. **Pensamiento crítico** - Analizar información de manera objetiva
+8. **Empatía** - Comprender y respetar las emociones y perspectivas del equipo
+
+### Herramientas Obligatorias
+
+- **GitHub** - Control de versiones
+- **ProofHub** - Gestión de proyectos
+- **Markdown** - Documentación
 
 ---
 
-## 🪪 Credenciales
+## Objetivo del Proyecto
 
-- Usuario: bchecker
-- Contraseña: bchecker121
+Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y publicarlas con **alta disponibilidad** y **escalabilidad**.
+
+### Características Técnicas
+
+- Aplicación desarrollada en **PHP**
+- Base de datos para almacenar información
+- Arquitectura de microservicios
+- Red interconectada a través del cloud
+- Seguridad en las comunicaciones
 
 ---
 
-## 📂 Estructura del Repositorio
+## Arquitectura del Sistema
 
+El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos:
+
+![Diagrama de Arquitectura](docs/diagrama.png)
+
+### Componentes del Sistema
+
+| Servidor | Función | Tecnología |
+|----------|---------|------------|
+| **S1** | Load Balancer / Proxy Inverso | nginx:alpine |
+| **S2** | Web Server - extagram.php | php:fpm |
+| **S3** | Web Server - extagram.php | php:fpm |
+| **S4** | Upload Server - upload.php | php:fpm |
+| **S5** | Image Server | nginx:alpine |
+| **S6** | Static Content Server (CSS/SVG) | nginx:alpine |
+| **S7** | Database Server | mysql |
+
+### Flujo de Datos
+```
+Browser → S1 (Load Balancer) → S2/S3 (Web Servers) → S7 (Database)
+                             ↓
+                             S4 (Upload) → /uploads/
+                             ↓
+                             S5 (Images)
+                             ↓
+                             S6 (Static)
+```
+
+---
+
+## Análisis Técnico
+
+### Requisitos Críticos
+
+1. **Persistencia de Datos**
+   - Volúmenes de almacenamiento externo: `/dbdata/` y `/uploads/`
+   - Garantizar que la información no sea volátil
+
+2. **Balanceo de Carga**
+   - Configuración de algoritmos de distribución en S1
+   - Evitar saturación de los nodos S2 y S3
+
+3. **Segregación de Servicios**
+   - Aislamiento de tareas de escritura (S4)
+   - Aislamiento de tareas de lectura (S2, S3)
+   - Optimización del tiempo de respuesta
+
+### Casos de Uso Principales
+
+#### Caso 1: Navegación y Consulta
+```
+Usuario → S1 → S2/S3 → Consulta a S7 (Base de Datos)
+```
+
+#### Caso 2: Carga de Medios
+```
+Usuario → S1 → S4 → Almacenamiento en /uploads/
+```
+
+---
+
+## Planificación de Sprints
+
+El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
+
+### Sprint 1: MVP (15/12/25 - 19/01/26)
+
+**Objetivos:**
+- Análisis y documentación inicial
+- Diseño mínimamente viable (MVP) con servidor web funcional
+- Implementación en una sola máquina (NGINX o Apache)
+- Instalación y configuración básica de servicios
+- Subida de imágenes por carpeta o base de datos
+
+**Entregables:**
+- Servidor web funcional
+- Base de datos configurada
+- Aplicación operativa básica
+- Acta de Sprint Planning
+- Acta de Sprint Review
+
+**Documentación:** [Sprint 1](./sprints/sprint1/)
+
+### Sprint 2: Dockerización (19/01/26 - 27/01/26)
+
+**Objetivos:**
+- Segregación de servicios en Docker
+- Comunicación entre contenedores mediante red bridge
+- Implementación de proxy inverso y balanceo de carga
+- Configurar balanceo entre S2-S3
+- Segregar peticiones hacia S4, S5 y S6
+- Definición de la topología de red con Packet Tracer
+
+**Entregables:**
+- Docker Compose configurado
+- Arquitectura de 7 contenedores
+- Documentación de red y comunicación
+- Acta de Sprint Planning
+- Acta de Sprint Review
+
+**Documentación:** [Sprint 2](./sprints/sprint2/)
+
+### Sprint 3: Pruebas y Documentación (02/02/26 - 10/02/26)
+
+**Objetivos:**
+- Pruebas de operativa web
+- Pruebas de alta disponibilidad
+- Pruebas de caída de nodos redundantes
+- Documentación final completa
+- Mejoras de seguridad y automatización
+- Configuración de control de versiones con SSH
+- Presentación y defensa del proyecto
+
+**Entregables:**
+- Repositorio GitHub con SSH configurado
+- Documentación Markdown completa
+- Informe de pruebas
+- Acta de Sprint Planning
+- Acta de Sprint Review
+- Presentación final
+
+**Documentación:** [Sprint 3](./sprints/sprint3/)
+
+---
+
+## Decisiones Tecnológicas
+
+### 1. Plataforma de Virtualización
+
+**Decisión:** Isard VDI
+
+**Justificación:**
+- Experiencia previa del equipo
+- Interfaz conocida
+- Acceso configurado y credenciales activas
+- Facilita el trabajo colaborativo
+
+### 2. Servidor Web
+
+**Decisión Sprint 1:** Apache HTTP Server  
+**Decisión Sprint 2-3:** NGINX
+
+**Justificación Sprint 1:**
+- Mayor familiaridad del equipo
+- Configuración más intuitiva
+- Integración directa con PHP mediante `libapache2-mod-php`
+
+**Justificación Sprint 2-3:**
+- Mejor rendimiento como proxy inverso
+- Arquitectura de microservicios
+- Mejor gestión de contenido estático
+
+### 3. PHP y FastCGI
+
+**Sprint 1:** `libapache2-mod-php`  
+**Sprints 2-3:** PHP-FPM (FastCGI Process Manager)
+
+**Versión:** PHP 8.x
+
+### 4. Base de Datos
+
+**Decisión:** MySQL
+
+**Justificación:**
+- Compatibilidad directa con código proporcionado (mysqli)
+- Experiencia previa del equipo
+- Documentación abundante
+
+---
+
+## Estructura del Repositorio
 ```
 /
 ├── README.md
@@ -113,6 +281,7 @@ El diagrama refleja la arquitectura seleccionada, con los servicios distribuidos
 ├── docs/
 │   ├── arquitectura.md
 │   ├── bbbd.md
+│   ├── diagrama.png
 │   ├── proves.md
 │   └── annexos/
 │       └── enunciat.md
@@ -138,38 +307,101 @@ El diagrama refleja la arquitectura seleccionada, con los servicios distribuidos
     └── readme.md
 ```
 
----
+### Descripción de Directorios
 
-## 🚀 Sprints
+- **app/** - Código fuente de la aplicación Extagram
+  - **config/** - Archivos de configuración
+  - **public/** - Scripts PHP principales
+  - **static/** - Recursos estáticos (CSS, SVG)
 
-* **Sprint 1:**  
-  * Análisis y documentación inicial  
-  * Primer prototipo funcional en una sola máquina  
-  * Instalación y configuración básica de servicios  
-  * Subida de imágenes por carpeta o base de datos
+- **docker/** - Configuración de contenedores Docker
+  - Dockerfiles específicos para cada servicio (S1-S7)
+  - docker-compose.yml para orquestación
 
-* **Sprint 2:**  
-  * Segregación de servicios en Docker  
-  * Comunicación entre contenedores  
-  * Implementación de balanceo y proxy inverso  
-  * Definición de la topología de red
+- **docs/** - Documentación técnica del proyecto
+  - Arquitectura del sistema
+  - Documentación de base de datos
+  - Pruebas realizadas
+  - Anexos y enunciado
 
-* **Sprint 3:**  
-  * Pruebas de alta disponibilidad  
-  * Documentación final  
-  * Mejoras de seguridad y automatización  
-  * Presentación y defensa del proyecto
+- **scripts/** - Scripts de automatización
+  - Backup y restauración de base de datos
+  - Scripts de despliegue
 
----
+- **sprints/** - Documentación de cada sprint
+  - Actas de planning y review
+  - Capturas de ProofHub
 
-**Capacidades clave del equipo:**  
-* Comunicación  
-* Trabajo en equipo  
-* Resolución de problemas  
-* Gestión del tiempo  
-* Liderazgo  
-* Adaptabilidad  
-* Pensamiento crítico  
-* Empatía  
+- **Tecnologia/** - Análisis de tecnologías empleadas
 
 ---
+
+## Documentación Técnica
+
+### Requisitos de Documentación
+
+1. **GitHub**
+   - Repositorio con validación SSH (intercambio de clave pública/privada)
+   - Documentación de control de versiones (ADD/PUSH/PULL/CLONE/COMMIT)
+
+2. **Markdown**
+   - Estructura de documentación en formato .md
+   - Árbol de documentación en el repositorio
+
+3. **Actas de Reuniones**
+   - Sprint Planning documentado
+   - Sprint Review documentado
+   - Capturas de ProofHub en cada acta
+
+### Enlaces a Documentación
+
+- [Arquitectura del Sistema](./docs/arquitectura.md)
+- [Base de Datos](./docs/bbbd.md)
+- [Pruebas Realizadas](./docs/proves.md)
+- [Enunciado Completo](./docs/annexos/enunciat.md)
+- [Análisis Tecnológico](./Tecnologia/readme.md)
+
+---
+
+## Anexos
+
+### Esquema de Base de Datos
+```sql
+CREATE DATABASE extagram_db;
+
+CREATE USER 'extagram_admin'@'%' IDENTIFIED BY 'pass123';
+
+GRANT ALL PRIVILEGES ON extagram_db.* TO 'extagram_admin'@'%';
+
+FLUSH PRIVILEGES;
+
+CREATE TABLE extagram_db.posts(
+    post TEXT, 
+    photourl TEXT
+);
+```
+
+### Código Fuente
+
+El código fuente completo está disponible en:
+- [extagram.php](./app/public/extagram.php)
+- [upload.php](./app/public/upload.php)
+- [style.css](./app/static/style.css)
+- [preview.svg](./app/static/preview.svg)
+
+### Scripts de Despliegue
+
+- [deploy.sh](./scripts/deploy.sh) - Script de despliegue automático
+- [backup_db.sh](./scripts/backup_db.sh) - Backup de base de datos
+- [restore_db.sh](./scripts/restore_db.sh) - Restauración de base de datos
+
+---
+
+## Equipo de Desarrollo
+
+Institut Tecnològic de Barcelona  
+Módulo 0379 - Administración de Sistemas Informáticos en Xarxa
+
+---
+
+**Última actualización:** Enero 2026
