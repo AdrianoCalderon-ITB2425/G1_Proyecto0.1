@@ -62,7 +62,7 @@ Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y
 
 - Aplicación desarrollada en **PHP**
 - Base de datos para almacenar información
-- Arquitectura de microservicios
+- Arquitectura de microservicios    
 - Red interconectada a través del cloud
 - Seguridad en las comunicaciones
 
