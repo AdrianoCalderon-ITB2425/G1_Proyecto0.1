@@ -16,7 +16,7 @@
 3. [Arquitectura del Sistema](#arquitectura-del-sistema)
 4. [Análisis Técnico](#análisis-técnico)
 5. [Planificación de Sprints](#planificación-de-sprints)
-6. [Decisiones Tecnológicas](#decisiones-tecnológicas)
+6. [Decisiones Tecnológicas](#decisiones-tecnológicas)  
 7. [Estructura del Repositorio](#estructura-del-repositorio)
 8. [Documentación Técnica](#documentación-técnica)
 9. [Credenciales](#credenciales)
@@ -72,7 +72,7 @@ Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y
 
 El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos:
 
-![Diagrama de Arquitectura](Diagrama/diagrama.png)
+![Diagrama de Arquitectura](/DIagrama/diagrama.png)
 
 ### Componentes del Sistema
 
