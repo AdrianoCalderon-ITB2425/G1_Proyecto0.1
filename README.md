@@ -9,13 +9,6 @@
 
 ---
 
-## Credenciales
-
-**Usuario:** `bchecker`  
-**Contraseña:** `bchecker121`
-
----
-
 ## Índice
 
 1. [Consideraciones Previas](#consideraciones-previas)
@@ -26,7 +19,8 @@
 6. [Decisiones Tecnológicas](#decisiones-tecnológicas)
 7. [Estructura del Repositorio](#estructura-del-repositorio)
 8. [Documentación Técnica](#documentación-técnica)
-9. [Anexos](#anexos)
+9. [Credenciales](#credenciales)
+10. [Anexos](#anexos)
 
 ---
 
@@ -78,7 +72,7 @@ Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y
 
 El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos:
 
-![Diagrama de Arquitectura](docs/diagrama.png)
+![Diagrama de Arquitectura](Diagrama/diagrama.png)
 
 ### Componentes del Sistema
 
@@ -259,6 +253,8 @@ El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
 │   └── static/
 │       ├── preview.svg
 │       └── style.css
+├── Diagrama/
+│   └── diagrama.png
 ├── docker/
 │   ├── docker-compose.yml
 │   ├── load-balancer-s1/
@@ -281,7 +277,6 @@ El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
 ├── docs/
 │   ├── arquitectura.md
 │   ├── bbbd.md
-│   ├── diagrama.png
 │   ├── proves.md
 │   └── annexos/
 │       └── enunciat.md
@@ -313,6 +308,8 @@ El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
   - **config/** - Archivos de configuración
   - **public/** - Scripts PHP principales
   - **static/** - Recursos estáticos (CSS, SVG)
+
+- **Diagrama/** - Diagrama de arquitectura del sistema
 
 - **docker/** - Configuración de contenedores Docker
   - Dockerfiles específicos para cada servicio (S1-S7)
@@ -360,6 +357,13 @@ El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
 - [Pruebas Realizadas](./docs/proves.md)
 - [Enunciado Completo](./docs/annexos/enunciat.md)
 - [Análisis Tecnológico](./Tecnologia/readme.md)
+
+---
+
+## Credenciales
+
+**Usuario:** `bchecker`  
+**Contraseña:** `bchecker121`
 
 ---
 
