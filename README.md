@@ -358,12 +358,6 @@ El proyecto se divide en **3 sprints quinzenales** de 10 horas cada uno:
 - [Enunciado Completo](./docs/annexos/enunciat.md)
 - [Análisis Tecnológico](./Tecnologia/readme.md)
 
----
-
-## Credenciales
-
-**Usuario:** `bchecker`  
-**Contraseña:** `bchecker121`
 
 ---
 
