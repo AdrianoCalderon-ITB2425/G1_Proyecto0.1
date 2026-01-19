@@ -237,18 +237,6 @@ sudo mysql -e "CREATE TABLE extagram_db.posts(post TEXT, photourl TEXT);"
 - `post` (TEXT) - Contenido del texto de la publicación
 - `photourl` (TEXT) - ID único del archivo de imagen
 
-### 10. Crear usuario y asignar privilegios
-```bash
-sudo mysql -e "CREATE USER 'extagram_admin'@'localhost' IDENTIFIED BY 'pass123';"
-sudo mysql -e "GRANT ALL PRIVILEGES ON extagram_db.* TO 'extagram_admin'@'localhost';"
-sudo mysql -e "FLUSH PRIVILEGES;"
-```
-
-**Credenciales de la base de datos:**
-- **Usuario:** extagram_admin
-- **Contraseña:** pass123
-- **Base de datos:** extagram_db
-
 ---
 
 ### 11. Crear directorio de uploads
