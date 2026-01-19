@@ -17,13 +17,13 @@
 4. [Objetivo del Proyecto](#objetivo-del-proyecto)
 5. [Arquitectura del Sistema](#arquitectura-del-sistema)
 6. [Análisis Técnico](#análisis-técnico)
-7. [Planificación de Sprints](#planificación-de-sprints)
+7. [Planificación de Sprints](/sprints/planificación%20de%20sprints.md)
 8. [Decisiones Tecnológicas](#decisiones-tecnológicas)
 9. [Estructura del Repositorio](#estructura-del-repositorio)
 10. [Documentación Técnica](#documentación-técnica)
 11. [Credenciales y Recursos](#credenciales-y-recursos)
 12. [Enlaces Importantes](#enlaces-importantes)
-13. [Anexos](#anexos)
+
 ---
 
 ## Consideraciones Previas
