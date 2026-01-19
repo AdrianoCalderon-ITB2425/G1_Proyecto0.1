@@ -74,7 +74,7 @@ Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y
 
 El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos:
 
-![Diagrama de Arquitectura](/DIagrama/diagrama.png)
+![Diagrama de Arquitectura](/Diagrama/diagrama.png)
 
 ### Componentes del Sistema
 
