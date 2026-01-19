@@ -9,19 +9,21 @@
 
 ---
 
-## Índice
+## 📋 Índice
 
-1. [Consideraciones Previas](#consideraciones-previas)
-2. [Objetivo del Proyecto](#objetivo-del-proyecto)
-3. [Arquitectura del Sistema](#arquitectura-del-sistema)
-4. [Análisis Técnico](#análisis-técnico)
-5. [Planificación de Sprints](#planificación-de-sprints)
-6. [Decisiones Tecnológicas](#decisiones-tecnológicas)  
-7. [Estructura del Repositorio](#estructura-del-repositorio)
-8. [Documentación Técnica](#documentación-técnica)
-9. [Credenciales](#credenciales)
-10. [Anexos](#anexos)
-
+1. [Información del Proyecto](#información-del-proyecto)
+2. [Equipo de Trabajo](#equipo-de-trabajo)
+3. [Consideraciones Previas](#consideraciones-previas)
+4. [Objetivo del Proyecto](#objetivo-del-proyecto)
+5. [Arquitectura del Sistema](#arquitectura-del-sistema)
+6. [Análisis Técnico](#análisis-técnico)
+7. [Planificación de Sprints](#planificación-de-sprints)
+8. [Decisiones Tecnológicas](#decisiones-tecnológicas)
+9. [Estructura del Repositorio](#estructura-del-repositorio)
+10. [Documentación Técnica](#documentación-técnica)
+11. [Credenciales y Recursos](#credenciales-y-recursos)
+12. [Enlaces Importantes](#enlaces-importantes)
+13. [Anexos](#anexos)
 ---
 
 ## Consideraciones Previas
