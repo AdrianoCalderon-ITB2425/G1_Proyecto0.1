@@ -42,61 +42,55 @@
     </form>
 
     <?php
-    // --- INICIO CONEXIÓN SEGURA ---
-    
-    // Importamos las variables ($servername, $username...) del archivo externo
-    // Si este archivo falta, el script se detendrá (seguridad)
+
     require_once 'db_config.php';
 
-    // Conexión
+
     $db = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
     if ($db->connect_error) {
         die("<div style='text-align:center; color:red; margin-top:20px'>Error de conexión: " . $db->connect_error . "</div>");
     }
-    // --- FIN CONEXIÓN SEGURA ---
 
-    // Obtenemos los posts ordenados por ID descendente
     $sql = "SELECT * FROM posts ORDER BY id DESC";
     $result = $db->query($sql);
 
     if ($result) {
         while($fila = $result->fetch_assoc()) {
             
-            // Inicio de la tarjeta .post
+
             echo "<div class='post'>";
             
-                // --- COLUMNA IZQUIERDA: CONTENIDO ---
+
                 echo "<div class='post-content'>";
                     
-                    // Texto
+
                     echo "<p>".htmlspecialchars($fila['post'])."</p>";
                     
-                    // Imagen
+
                     if (!empty($fila['photourl'])) {
-                        // Aseguramos que cargue de la carpeta uploads/
+ 
                         echo "<img src='uploads/".$fila['photourl']."' alt='Foto subida'>";
                     }
                 
                 echo "</div>"; 
 
-                // --- COLUMNA DERECHA: SIDEBAR (BOTÓN) ---
+
                 echo "<div class='post-sidebar'>";
                     
-                    // Formulario de borrar
+
                     echo "<form method='POST' action='delete.php' onsubmit='return confirm(\"¿Estás seguro de querer borrar esta publicación?\");' style='width:100%; height:100%; margin:0; padding:0; border:none;'>";
                         echo "<input type='hidden' name='id' value='".$fila['id']."'>";
                         
                         echo "<button type='submit' class='btn-delete' title='Eliminar publicación'>";
-                            // Icono Papelera
+
                             echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/></svg>';
                         echo "</button>";
                     echo "</form>";
 
                 echo "</div>"; 
 
-            echo "</div>"; // Fin .post
+            echo "</div>"; 
         }
     } else {
         echo "<p style='text-align:center; color:#888'>No hay publicaciones todavía.</p>";
