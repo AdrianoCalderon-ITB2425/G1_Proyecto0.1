@@ -139,5 +139,3 @@ Cal definir i executar proves sobre: [file:4]
 També cal crear un **arbre de documentació en Markdown** dins del repositori. [file:4]
 
 ---
-
-
