@@ -293,32 +293,11 @@ Usuario → S1 → S4 → Almacenamiento en /uploads/
 - [Enunciado Completo](./docs/annexos/enunciat.md)
 - [Análisis Tecnológico](./Tecnologia/readme.md)
 
----
-
-## Credenciales
-
-**Usuario:** `bchecker`  
-**Contraseña:** `bchecker121`
 
 ---
 
 ## Anexos
 
-### Esquema de Base de Datos
-```sql
-CREATE DATABASE extagram_db;
-
-CREATE USER 'extagram_admin'@'%' IDENTIFIED BY 'pass123';
-
-GRANT ALL PRIVILEGES ON extagram_db.* TO 'extagram_admin'@'%';
-
-FLUSH PRIVILEGES;
-
-CREATE TABLE extagram_db.posts(
-    post TEXT, 
-    photourl TEXT
-);
-```
 
 ### Código Fuente
 
