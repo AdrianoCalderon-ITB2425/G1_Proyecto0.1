@@ -182,16 +182,6 @@ Usuario → S1 → S4 → Almacenamiento en /uploads/
 ```
 /
 ├── README.md
-├── app/
-│   ├── config/
-│   │   └── config.sample.php
-│   ├── public/
-│   │   ├── extagram.php
-│   │   ├── index.php
-│   │   └── upload.php
-│   └── static/
-│       ├── preview.svg
-│       └── style.css
 ├── Diagrama/
 │   └── diagrama.png
 ├── docker/
