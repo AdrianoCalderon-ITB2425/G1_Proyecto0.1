@@ -207,12 +207,8 @@ Usuario → S1 → S4 → Almacenamiento en /uploads/
 │   ├── nginx-storage-s5/
 │   │   ├── Dockerfile
 │   │   └── nginx.conf
-│   ├── php-s2/
-│   │   └── Dockerfile
-│   ├── php-s3/
-│   │   └── Dockerfile
-│   └── php-upload-s4/
-│       └── Dockerfile
+│   ├── php/
+│      └── Dockerfile
 ├── docs/
 │   ├── arquitectura.md
 │   ├── bbbd.md
