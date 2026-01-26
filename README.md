@@ -80,12 +80,12 @@ El sistema se compone de **7 servidores especializados** para optimizar el rendi
 
 | Servidor | Función | Tecnología |
 |----------|---------|------------|
-| **S1** | Load Balancer / Proxy Inverso | nginx:alpine |
+| **S1** | Load Balancer / Proxy Inverso | apache2 |
 | **S2** | Web Server - extagram.php | php:fpm |
 | **S3** | Web Server - extagram.php | php:fpm |
 | **S4** | Upload Server - upload.php | php:fpm |
-| **S5** | Image Server | nginx:alpine |
-| **S6** | Static Content Server (CSS/SVG) | nginx:alpine |
+| **S5** | Image Server | apache2 |
+| **S6** | Static Content Server (CSS/SVG) | apache2 |
 | **S7** | Database Server | mysql |
 
 ### Flujo de Datos
