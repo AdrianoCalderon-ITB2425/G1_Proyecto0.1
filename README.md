@@ -91,16 +91,9 @@ Mostramos el diagrama de referencia:
 | **S7** | Database Server | mysql |
 
 ### Flujo de Datos
-```
-Browser → S1 (Load Balancer) → S2/S3 (Web Servers) → S7 (Database)
-                             ↓
-                             S4 (Upload) → /uploads/
-                             ↓
-                             S5 (Images)
-                             ↓
-                             S6 (Static)
-```
+Se muestra el flujo de datos:
 
+![Esquema](esquema.drawio.png)
 ---
 
 ## Análisis Técnico
