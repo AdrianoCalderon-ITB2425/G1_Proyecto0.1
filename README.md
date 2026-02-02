@@ -72,7 +72,9 @@ Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y
 
 ## Arquitectura del Sistema
 
-El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos:
+El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos.
+
+Mostramos el diagrama de referencia:
 
 ![Diagrama de Arquitectura](/Diagrama/diagrama.png)
 
