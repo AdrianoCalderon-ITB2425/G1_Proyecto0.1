@@ -91,7 +91,6 @@ Mostramos el diagrama de referencia:
 | **S7** | Database Server | mysql |
 
 ### Flujo de Datos
-Se muestra el flujo de datos:
 
 ![Esquema](esquema.drawio.png)
 ---
