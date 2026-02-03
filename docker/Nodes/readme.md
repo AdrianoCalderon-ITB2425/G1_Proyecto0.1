@@ -83,7 +83,7 @@ drwxrwxrwx 2 root root 4096 Jan 26 16:07 uploads
 
 ---
 
-## 🖼️ S5 - Image Server
+## S5 - Image Server
 
 ### Paso 1: Crear Dockerfile para S5
 
