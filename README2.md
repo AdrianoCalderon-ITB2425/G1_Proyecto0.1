@@ -1,6 +1,6 @@
 # Proyecto 0.1 - Desplegament d'aplicació Extagram
 
-## ℹ️ Información del Proyecto
+## Información del Proyecto
 
 - **Módulo:** 0379 - Projecte intermodular d'administració de sistemes informàtics en xarxa  
 - **Actividad:** Pràctica P0.1 - Desplegament d'aplicació extagram  
@@ -9,21 +9,21 @@
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilidad, usando arquitectura de microservicios y contenedores Docker.
 
 ---
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 
 - 7 servidores especializados (balanceador, web, upload, imágenes, estáticos, BBDD)
 - Balanceo de carga, persistencia y segregación de servicios
-- [Ver diagrama y detalles](docs/arquitectura.md)
+- [Ver diagrama y detalles](docs/arquitectura.png)
 
 ---
 
-## 📂 Estructura del Repositorio
+## Estructura del Repositorio
 /atomic_server/ # Configuracion del servidor atómico
 
 /Diagrama/ # Imagen del diagrama de funcionamiento
@@ -38,7 +38,7 @@ Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilida
 
 ---
 
-## 📄 Documentación Técnica
+## Documentación Técnica
 
 - [Arquitectura del Sistema](docs/arquitectura.png)
 - [Base de Datos](docker/BBDD/01_schema.sql)
@@ -48,7 +48,7 @@ Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilida
 
 ---
 
-## 👥 Equipo
+## Equipo
 
 Carlos Rodríguez, Cesc Martínez, Jordi Eduard, Adriano Calderón  
 Institut Tecnològic de Barcelona
