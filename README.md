@@ -2,308 +2,57 @@
 
 ## Información del Proyecto
 
-**Módulo:** 0379 - Projecte intermodular d'administració de sistemes informàtics en xarxa  
-**Actividad:** Pràctica P0.1 - Desplegament d'aplicació extagram  
-**Repositorio:** [G1_Proyecto0.1](https://github.com/AdrianoCalderon-ITB2425/G1_Proyecto0.1)  
-**Documentación:** [Google Docs](https://docs.google.com/document/d/1THLl41WrUCbAfqNdsbIqzLCdOVsk8ueJG0qNdfdMLiY/edit?tab=t.0#heading=h.jzzouqwst4le)
+- **Módulo:** 0379 - Projecte intermodular d'administració de sistemes informàtics en xarxa  
+- **Actividad:** Pràctica P0.1 - Desplegament d'aplicació extagram  
+- **Repositorio:** [G1_Proyecto0.1](https://github.com/AdrianoCalderon-ITB2425/G1_Proyecto0.1)  
+- **Documentación:** [Google Docs](https://docs.google.com/document/d/1THLl41WrUCbAfqNdsbIqzLCdOVsk8ueJG0qNdfdMLiY/edit?tab=t.0#heading=h.jzzouqwst4le)
 
 ---
 
-## 📋 Índice
+## Objetivo
 
-1. [Información del Proyecto](#información-del-proyecto)
-2. [Equipo de Trabajo](#equipo-de-trabajo)
-3. [Consideraciones Previas](#consideraciones-previas)
-4. [Objetivo del Proyecto](#objetivo-del-proyecto)
-5. [Arquitectura del Sistema](#arquitectura-del-sistema)
-6. [Análisis Técnico](#análisis-técnico)
-7. [Planificación de Sprints](/sprints/planificación%20de%20sprints.md)
-8. [Decisiones Tecnológicas](#decisiones-tecnológicas)
-9. [Estructura del Repositorio](#estructura-del-repositorio)
-10. [Documentación Técnica](#documentación-técnica)
-11. [Credenciales y Recursos](#credenciales-y-recursos)
-12. [Enlaces Importantes](#enlaces-importantes)
-
----
-
-## Consideraciones Previas
-
-Cada miembro del equipo es responsable de la **totalidad del contenido del proyecto**, independientemente de quién haya realizado cada parte. Todos los miembros deben:
-
-- Conocer todas las partes del proyecto
-- Defender su contenido mediante preguntas del profesorado
-- Ser responsables de la custodia de la totalidad del proyecto
-- Tener siempre acceso al proyecto y trabajar en equipo
-
-### Capacidades Clave del Equipo
-
-Durante la realización del proyecto se valoran y desarrollan las siguientes capacidades:
-
-1. **Comunicación** - Compartir ideas, dar y recibir feedback, mantener informado al equipo
-2. **Trabajo en equipo** - Colaborar, respetar opiniones diversas y contribuir al bien común
-3. **Resolución de problemas** - Identificar problemas, analizar situaciones y encontrar soluciones
-4. **Gestión del tiempo** - Organizar y priorizar tareas para cumplir con los plazos
-5. **Liderazgo** - Guiar y motivar a otros, asumir responsabilidades
-6. **Adaptabilidad** - Ajustarse a cambios y nuevas situaciones
-7. **Pensamiento crítico** - Analizar información de manera objetiva
-8. **Empatía** - Comprender y respetar las emociones y perspectivas del equipo
-
-### Herramientas Obligatorias
-
-- **GitHub** - Control de versiones
-- **ProofHub** - Gestión de proyectos
-- **Markdown** - Documentación
-
----
-
-## Objetivo del Proyecto
-
-Desplegar una aplicación web llamada **Extagram** que permite subir imágenes y publicarlas con **alta disponibilidad** y **escalabilidad**.
-
-### Características Técnicas
-
-- Aplicación desarrollada en **PHP**
-- Base de datos para almacenar información
-- Arquitectura de microservicios    
-- Red interconectada a través del cloud
-- Seguridad en las comunicaciones
+Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilidad, usando arquitectura de microservicios y contenedores Docker.
 
 ---
 
 ## Arquitectura del Sistema
 
-El sistema se compone de **7 servidores especializados** para optimizar el rendimiento y la tolerancia a fallos.
-
-Mostramos el diagrama de referencia:
-
-![Diagrama de Arquitectura](/Diagrama/diagrama.png)
-
-### Componentes del Sistema
-
-| Servidor | Función | Tecnología |
-|----------|---------|------------|
-| **S1** | Load Balancer / Proxy Inverso | apache2 |
-| **S2** | Web Server - extagram.php | php:fpm |
-| **S3** | Web Server - extagram.php | php:fpm |
-| **S4** | Upload Server - upload.php | php:fpm |
-| **S5** | Image Server | apache2 |
-| **S6** | Static Content Server (CSS/SVG) | apache2 |
-| **S7** | Database Server | mysql |
-
-### Flujo de Datos
-
-![Esquema](esquema.drawio.png)
----
-
-## Análisis Técnico
-
-### Requisitos Críticos
-
-1. **Persistencia de Datos**
-   - Volúmenes de almacenamiento externo: `/dbdata/` y `/uploads/`
-   - Garantizar que la información no sea volátil
-
-2. **Balanceo de Carga**
-   - Configuración de algoritmos de distribución en S1
-   - Evitar saturación de los nodos S2 y S3
-
-3. **Segregación de Servicios**
-   - Aislamiento de tareas de escritura (S4)
-   - Aislamiento de tareas de lectura (S2, S3)
-   - Optimización del tiempo de respuesta
-
-### Casos de Uso Principales
-
-#### Caso 1: Navegación y Consulta
-```
-Usuario → S1 → S2/S3 → Consulta a S7 (Base de Datos)
-```
-
-#### Caso 2: Carga de Medios
-```
-Usuario → S1 → S4 → Almacenamiento en /uploads/
-```
-
-
----
-
-## Decisiones Tecnológicas
-
-### 1. Plataforma de Virtualización
-
-**Decisión:** Isard VDI
-
-**Justificación:**
-- Experiencia previa del equipo
-- Interfaz conocida
-- Acceso configurado y credenciales activas
-- Facilita el trabajo colaborativo
-
-### 2. Servidor Web
-
-**Decisión Sprint 1:** Apache HTTP Server  
-**Decisión Sprint 2-3:** NGINX
-
-**Justificación Sprint 1:**
-- Mayor familiaridad del equipo
-- Configuración más intuitiva
-- Integración directa con PHP mediante `libapache2-mod-php`
-
-**Justificación Sprint 2-3:**
-- Mejor rendimiento como proxy inverso
-- Arquitectura de microservicios
-- Mejor gestión de contenido estático
-
-### 3. PHP y FastCGI
-
-**Sprint 1:** `libapache2-mod-php`  
-**Sprints 2-3:** PHP-FPM (FastCGI Process Manager)
-
-**Versión:** PHP 8.x
-
-### 4. Base de Datos
-
-**Decisión:** MySQL
-
-**Justificación:**
-- Compatibilidad directa con código proporcionado (mysqli)
-- Experiencia previa del equipo
-- Documentación abundante
+- 7 servidores especializados (balanceador, web, upload, imágenes, estáticos, BBDD)
+- Balanceo de carga, persistencia y segregación de servicios
+- [Ver diagrama y detalles](docs/arquitectura.png)
 
 ---
 
 ## Estructura del Repositorio
-```
-/
-├── README.md
-├── Diagrama/
-│   └── diagrama.png
-├── docker/
-│   ├── docker-compose.yml
-│   ├── load-balancer-s1/
-│   │   ├── Dockerfile
-│   │   └── nginx.conf
-│   ├── mysql-s7/
-│   │   └── bbbd/
-│   ├── nginx-static-s6/
-│   │   ├── Dockerfile
-│   │   └── nginx.conf
-│   ├── nginx-storage-s5/
-│   │   ├── Dockerfile
-│   │   └── nginx.conf
-│   ├── php/
-│      └── Dockerfile
-├── docs/
-│   ├── arquitectura.md
-│   ├── bbbd.md
-│   ├── proves.md
-│   └── annexos/
-│       └── enunciat.md
-├── scripts/
-│   ├── backup_db.sh
-│   ├── deploy.sh
-│   └── restore_db.sh
-├── sprints/
-│   ├── sprint1/
-│   │   ├── acta_planning.md
-│   │   ├── acta_review.md
-│   │   └── proofhub_screenshot.png
-│   ├── sprint2/
-│   │   ├── acta_planning.md
-│   │   ├── acta_review.md
-│   │   └── proofhub_screenshot2.png
-│   └── sprint3/
-│       ├── acta_planning.md
-│       ├── acta_review.md
-│       └── proofhub_screenshot3.png
-└── Tecnologia/
-    ├── analisis.html
-    └── readme.md
-```
+/atomic_server/ # Configuracion del servidor atómico
 
-### Descripción de Directorios
+/Diagrama/ # Imagen del diagrama de funcionamiento
 
-- **app/** - Código fuente de la aplicación Extagram
-  - **config/** - Archivos de configuración
-  - **public/** - Scripts PHP principales
-  - **static/** - Recursos estáticos (CSS, SVG)
+/docker/ # Configuración de contenedores Docker
 
-- **Diagrama/** - Diagrama de arquitectura del sistema
+/docs/ # Documentación técnica y anexos
 
-- **docker/** - Configuración de contenedores Docker
-  - Dockerfiles específicos para cada servicio (S1-S7)
-  - docker-compose.yml para orquestación
+/sprints/ # Documentación de los sprints
 
-- **docs/** - Documentación técnica del proyecto
-  - Arquitectura del sistema
-  - Documentación de base de datos
-  - Pruebas realizadas
-  - Anexos y enunciado
-
-- **scripts/** - Scripts de automatización
-  - Backup y restauración de base de datos
-  - Scripts de despliegue
-
-- **sprints/** - Documentación de cada sprint
-  - Actas de planning y review
-  - Capturas de ProofHub
-
-- **Tecnologia/** - Análisis de tecnologías empleadas
+/Tecnologia/ # Análisis de tecnologías usadas
 
 ---
 
 ## Documentación Técnica
 
-### Requisitos de Documentación
-
-1. **GitHub**
-   - Repositorio con validación SSH (intercambio de clave pública/privada)
-   - Documentación de control de versiones (ADD/PUSH/PULL/CLONE/COMMIT)
-
-2. **Markdown**
-   - Estructura de documentación en formato .md
-   - Árbol de documentación en el repositorio
-
-3. **Actas de Reuniones**
-   - Sprint Planning documentado
-   - Sprint Review documentado
-   - Capturas de ProofHub en cada acta
-
-### Enlaces a Documentación
-
-- [Arquitectura del Sistema](./docs/arquitectura.md)
-- [Base de Datos](./docs/bbbd.md)
-- [Pruebas Realizadas](./docs/proves.md)
-- [Enunciado Completo](./docs/annexos/enunciat.md)
-- [Análisis Tecnológico](./Tecnologia/readme.md)
-
+- [Arquitectura del Sistema](docs/arquitectura.png)
+- [Base de Datos](docker/BBDD/01_schema.sql)
+- [Pruebas Realizadas](docs/pruebas.md)
+- [Enunciado](docs/annexos/enunciat.md)
+- [Análisis Tecnológico](Tecnologia/readme.md)
 
 ---
 
-## Anexos
+## Equipo
 
-
-### Código Fuente
-
-El código fuente completo está disponible en:
-- [extagram.php](./app/public/extagram.php)
-- [upload.php](./app/public/upload.php)
-- [style.css](./app/static/style.css)
-- [preview.svg](./app/static/preview.svg)
-
-### Scripts de Despliegue
-
-- [deploy.sh](./scripts/deploy.sh) - Script de despliegue automático
-- [backup_db.sh](./scripts/backup_db.sh) - Backup de base de datos
-- [restore_db.sh](./scripts/restore_db.sh) - Restauración de base de datos
+Carlos Rodríguez, Cesc Martínez, Jordi Eduard, Adriano Calderón  
+Institut Tecnològic de Barcelona
 
 ---
 
-## Equipo de Desarrollo
-
-Institut Tecnològic de Barcelona  
-Módulo 0379 - Administración de Sistemas Informáticos en Xarxa
-
----
-
-**Última actualización:** Enero 2026
+**Última actualización:** Febrero 2026
