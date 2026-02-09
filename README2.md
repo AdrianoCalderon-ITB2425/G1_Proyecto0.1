@@ -38,9 +38,9 @@ Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilida
 
 ## 📄 Documentación Técnica
 
-- [Arquitectura del Sistema](docs/arquitectura.md)
-- [Base de Datos](docs/bbbd.md)
-- [Pruebas Realizadas](docs/proves.md)
+- [Arquitectura del Sistema](docs/arquitectura.png)
+- [Base de Datos](docker/BBDD/01_schema.sql)
+- [Pruebas Realizadas](docs/pruebas.md)
 - [Enunciado](docs/annexos/enunciat.md)
 - [Análisis Tecnológico](Tecnologia/readme.md)
 
