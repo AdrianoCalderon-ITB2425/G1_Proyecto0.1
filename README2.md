@@ -24,7 +24,9 @@ Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilida
 ---
 
 ## 📂 Estructura del Repositorio
-/app/ # Código fuente de la aplicación
+/atomic_server/ # Configuracion del servidor atómico
+
+/Diagrama/ # Imagen del diagrama de funcionamiento
 
 /docker/ # Configuración de contenedores Docker
 
