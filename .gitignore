@@ -1,5 +1,5 @@
 <?php
-
+# Si quieres utilizar una IP concreta en tu servidor, sustituye "localhost" por la IP deseada
 $servername = "localhost"; 
 $username = "extagram_admin";
 $password = "pass123";
