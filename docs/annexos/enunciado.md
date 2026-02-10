@@ -19,9 +19,9 @@
 
 ## Consideracions prèvies
 
-Cada membre de l'equip i grup serà responsable de la **totalitat** del contingut del projecte, independentment de si ha realitzat o no una part concreta. Tots han de conèixer totes les parts i defensar el seu contingut mitjançant preguntes que li pot fer el professorat. [file:4]
+Cada membre de l'equip i grup serà responsable de la **totalitat** del contingut del projecte, independentment de si ha realitzat o no una part concreta. Tots han de conèixer totes les parts i defensar el seu contingut mitjançant preguntes que li pot fer el professorat.
 
-Cada membre de l'equip també és responsable de la custòdia de la totalitat del projecte, i tots els membres han de tenir sempre accés al projecte i treballar en equip. És un treball en **equip**, tots són responsables, i durant la realització del projecte també es valoren les capacitats clau. [file:4]
+Cada membre de l'equip també és responsable de la custòdia de la totalitat del projecte, i tots els membres han de tenir sempre accés al projecte i treballar en equip. És un treball en **equip**, tots són responsables, i durant la realització del projecte també es valoren les capacitats clau.
 
 ### Capacitats clau
 
@@ -36,17 +36,17 @@ Algunes de les capacitats clau fonamentals per al bon funcionament del grup i l'
 7. **Pensament crític**: Analitzar informació i idees de manera objectiva per prendre decisions informades.  
 8. **Empatia**: Comprendre i respectar emocions i perspectives dels altres membres de l’equip.  
 
-Desenvolupar aquestes capacitats millora l'eficiència del projecte i enriqueix l'experiència personal i professional de cada membre. [file:4]
+Desenvolupar aquestes capacitats millora l'eficiència del projecte i enriqueix l'experiència personal i professional de cada membre.
 
 ### Important 1
 
-Heu de continuar fent servir les eines apreses en projectes anteriors: [file:4]
+Heu de continuar fent servir les eines apreses en projectes anteriors:
 
 - GitHub  
 - Proofhub  
 - Markdown  
 
-Recordeu que en la rúbrica, tota la gestió, planificació i documentació tenen un pes substancial. [file:4]
+Recordeu que en la rúbrica, tota la gestió, planificació i documentació tenen un pes substancial.
 
 ### Important 2
 
@@ -56,16 +56,16 @@ Les reunions d’**sprint planning** i **sprint review** han de quedar documenta
 
 ## Objectiu
 
-Fer el desplegament d’una aplicació anomenada **extagram** que permet pujar imatges i publicar-les amb alta disponibilitat i escalabilitat. L’aplicació està desenvolupada en PHP i utilitza una base de dades per emmagatzemar la informació. [file:4]
+Fer el desplegament d’una aplicació anomenada **extagram** que permet pujar imatges i publicar-les amb alta disponibilitat i escalabilitat. L’aplicació està desenvolupada en PHP i utilitza una base de dades per emmagatzemar la informació. 
 
-Cal implementar una xarxa interconnectada a través del núvol que integri i comuniqui múltiples tecnologies i serveis amb seguretat, escollint l’entorn d’implementació. Es farà servir una web d’alta disponibilitat amb la següent estructura. [file:4]
+Cal implementar una xarxa interconnectada a través del núvol que integri i comuniqui múltiples tecnologies i serveis amb seguretat, escollint l’entorn d’implementació. Es farà servir una web d’alta disponibilitat amb la següent estructura. 
 
 ### Arquitectura
 
-Els elements del sistema són: [file:4]
+Els elements del sistema són: 
 
-- **S1 – nginx:alpine**:  
-  - Servidor NGINX utilitzat com a proxy invers.  
+- **S1 – apache/nginx:alpine**:  
+  - Servidor Apache/NGINX utilitzat com a proxy invers.  
   - Rep totes les peticions del navegador.  
   - Per a les peticions a `extagram.php` realitza balanceig de càrrega entre S2 i S3.  
 
@@ -77,11 +77,11 @@ Els elements del sistema són: [file:4]
   - Servei PHP-FPM que executa `upload.php`.  
   - Emmagatzema els fitxers (imatges) en un directori del servidor (part dinàmica 2).  
 
-- **S5 – nginx:alpine**:  
-  - Servidor NGINX que serveix les imatges carregades al directori del servidor a través de S4 (part estàtica).  
+- **S5 – apache/nginx:alpine**:  
+  - Servidor Apache/NGINX que serveix les imatges carregades al directori del servidor a través de S4 (part estàtica).  
 
-- **S6 – nginx:alpine**:  
-  - Servidor NGINX que serveix `style.css` i `preview.svg` (part estàtica).  
+- **S6 – apache/nginx:alpine**:  
+  - Servidor Apache/NGINX que serveix `style.css` i `preview.svg` (part estàtica).  
 
 - **S7 – mysql**:  
   - Conté la base de dades MySQL.  
@@ -112,13 +112,13 @@ S’identifiquen els següents sprints, quinzenals de 10 hores de duració cadas
 - Segregar l’aplicació mitjançant Docker en local, simulant els servidors.  
 - Tota la comunicació es fa en xarxa pont entre contenidors Docker, sense consideracions de seguretat ni caiguda de BBDD/servidor d’imatges.  
 - Implementar proxy invers i balanceig cap als servidors S2–S3, i segregació de peticions cap a S4 (S5) i S6.  
-- Amb Packet Tracer o eina similar, definir l’esquema de la xarxa. [file:4]
+- Amb Packet Tracer o eina similar, definir l’esquema de la xarxa.
 
 ---
 
 ## Proves
 
-Cal definir i executar proves sobre: [file:4]
+Cal definir i executar proves sobre:
 
 - Operativa general de la web.  
 - Caiguda de nodes redundants.  
@@ -136,6 +136,6 @@ Cal definir i executar proves sobre: [file:4]
   - `git pull`  
   - `git clone`  
 
-També cal crear un **arbre de documentació en Markdown** dins del repositori. [file:4]
+També cal crear un **arbre de documentació en Markdown** dins del repositori.
 
 ---
