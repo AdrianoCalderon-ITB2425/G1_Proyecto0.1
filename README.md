@@ -19,7 +19,7 @@ Desplegar la aplicación web **Extagram** con alta disponibilidad y escalabilida
 
 - 7 servidores especializados (balanceador, web, upload, imágenes, estáticos, BBDD)
 - Balanceo de carga, persistencia y segregación de servicios
-- [Ver diagrama y detalles](docs/arquitectura.png)
+- [Ver diagrama](docs/arquitectura.png)
 
 ---
 
