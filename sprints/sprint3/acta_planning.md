@@ -1,4 +1,4 @@
-# Sprint Planning 3 (3-2-2026)
+# Sprint Planning 3 | 3-2-2026
 
 Per a aquest últim sprint ens centrarem a acabar de polir el projecte.
 
