@@ -1,5 +1,7 @@
+version: '3.8'
+
 services:
-  # --- CAPA DE ENTRADA ---
+  
   s1-proxy:
     build: ./Balancer
     container_name: s1-proxy
@@ -10,20 +12,25 @@ services:
     depends_on:
       - s2-app
       - s3-app
+      - s4-upload
     networks:
-      - extagram-net
+      - net-proxy
+      - net-app
+      - net-vpn    
 
-  # --- CAPA DE APLICACIÓN (Nodos) ---
+  
   s2-app: &node_base
     build: ./Nodes
+    container_name: s2-app
     environment:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - ./html:/var/www/html
-      - uploads-shared:/var/www/html/uploads
+      - ./uploads:/var/www/html/uploads
     networks:
-      - extagram-net
+      - net-app
+      - net-db
 
   s3-app:
     <<: *node_base
@@ -33,14 +40,14 @@ services:
     <<: *node_base
     container_name: s4-upload
 
-  # --- CAPA DE CONTENIDO ---
+ 
   s5-images:
     image: httpd:2.4
     container_name: s5-images
     volumes:
-      - uploads-shared:/usr/local/apache2/htdocs/uploads:ro
+      - ./uploads:/usr/local/apache2/htdocs/imatges_grup1:ro
     networks:
-      - extagram-net
+      - net-vpn    
 
   s6-static:
     image: httpd:2.4
@@ -48,27 +55,30 @@ services:
     volumes:
       - ./html:/usr/local/apache2/htdocs:ro
     networks:
-      - extagram-net
+      - net-app
 
-  # --- CAPA DE DATOS ---
+
   s7-db:
     image: mariadb:10.6
     container_name: s7_database
     env_file: .env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - ./data/db:/var/lib/mysql
+      - db_data:/var/lib/mysql   
       - ./BBDD/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     networks:
-      - extagram-net
+      - net-db     
 
-volumes:
-  uploads-shared:
 
 networks:
-  extagram-net:
+  net-proxy:    
     driver: bridge
+  net-app:      
+    driver: bridge
+  net-db:       
+    driver: bridge
+  net-vpn:      
+    driver: bridge
+
+
+volumes:        
+  db_data:      

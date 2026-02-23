@@ -11,3 +11,4 @@ RUN { \
     echo 'opcache.enable=0'; \
     echo 'opcache.enable_cli=0'; \
 } > /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+
