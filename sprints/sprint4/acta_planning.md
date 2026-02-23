@@ -216,7 +216,7 @@ Infraestructura desplegada:
 - **Documentación paralela:** Documentar mientras se implementa
 
 ### Dailies
-- Sincronización diaria a las 10:00 AM
+- Sincronización diaria a las 15:10
 - Duración máxima: 15 minutos
 - Formato: Qué hice ayer / Qué haré hoy / Impedimentos
 
@@ -313,7 +313,3 @@ Estado inicial de las tareas del Sprint 4 en ProofHub.
 - Validar que la aplicación sigue funcionando después de cada cambio
 
 ---
-
-**Aprobado por:** Todo el equipo  
-**Fecha:** 17/02/2026  
-**Próxima reunión:** Daily Standup 18/02/2026 10:00 AM
