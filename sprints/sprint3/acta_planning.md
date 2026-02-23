@@ -1,12 +1,12 @@
 # Sprint Planning 3 | 3-2-2026
 
-Per a aquest últim sprint ens centrarem a acabar de polir el projecte.
+Para este último sprint nos centraremos en acabar de pulir el proyecto.
 
-## Objectius per Equips
+## Objetivos por Equipos
 
-* **Equip 1 (Carlos i Eduard):** Acabaran de solucionar alguns errors de balanceig i d'afegir carpeta d'uploads per guardar les imatges als servidors i de completar-ne la documentació pertinent.
-* **Equip 2 (Adriano i Francesc):** S'encarregaran de millorar l'aspecte de la pàgina web aplicant-hi retocs estètics, i d'acabar de polir tant la documentació ja existent com la nova.
+* **Equipo 1 (Carlos y Eduard):** Acabarán de solucionar algunos errores de balanceo y de añadir la carpeta de *uploads* para guardar las imágenes en los servidores, además de completar su documentación pertinente.
+* **Equipo 2 (Adriano y Francesc):** Se encargarán de mejorar el aspecto de la página web aplicando retoques estéticos, y de acabar de pulir tanto la documentación ya existente como la nueva.
 
-## Metodologia de Treball
+## Metodología de Trabajo
 
-> De tota manera, els equips seran transversals i ens podrem anar ajudant entre nosaltres. A més, en tot moment estarem informats de les tasques que està duent a terme cadascú.
+> De todas formas, los equipos serán transversales y nos podremos ir ayudando entre nosotros. Además, en todo momento estaremos informados de las tareas que está llevando a cabo cada uno.
