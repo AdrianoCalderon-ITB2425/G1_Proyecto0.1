@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
               y llama a Extraer_BBDD.php para sacar el BLOB de la Base de Datos (S7).
         */
         echo '      <img src="/uploads/' . $img_name . '" 
-                     onerror="this.src=\'Extraer_BBDD.php?nom=' . $img_name . '\';" 
+                     onerror="this.src=\'Extraer_BBDD.php?id=' . $img_name . '\';" 
                      style="width: 100%; height: auto; display: block;" 
                      alt="Imagen">';
         echo '  </div>';
