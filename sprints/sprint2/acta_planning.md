@@ -22,7 +22,7 @@ Responsables de la infraestructura y balanceo:
 * **S2 y S3:** Configuración y despliegue de `extagram.php`.
 
 #### **Grupo 2: Adriano y Cesc**
-*(Asignación de tareas específicas en proceso según los requerimientos del contenedor correspondiente).*
+* Se encargarán del resto de contenedores y tareas pendientes.
 
 ---
 
