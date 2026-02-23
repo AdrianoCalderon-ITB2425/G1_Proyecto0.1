@@ -1,11 +1,12 @@
+# Sprint Planning 3 (3-2-2026)
 
-# Acta de Sprint 2 Review | 02-02-2026
+Per a aquest últim sprint ens centrarem a acabar de polir el projecte.
 
-El día de hoy hemos finalizado el segundo sprint y hemos llegado a las siguientes conclusiones:
+## Objectius per Equips
 
-* Se da la configuración básica por terminada y se añaden funcionalidades que hagan más cómoda la experiencia del usuario y su posterior documentación.
-* Se amplía la documentación del trabajo ya hecho.
-* Se comienza a trabajar en el **Sprint 3**, valorando la posible documentación restante y su carga de trabajo consecuente.
+* **Equip 1 (Carlos i Eduard):** Acabaran de solucionar alguns errors de balanceig i d'afegir carpeta d'uploads per guardar les imatges als servidors i de completar-ne la documentació pertinent.
+* **Equip 2 (Adriano i Francesc):** S'encarregaran de millorar l'aspecte de la pàgina web aplicant-hi retocs estètics, i d'acabar de polir tant la documentació ja existent com la nova.
 
-## Mejoras
-- Crear directorio en `uploads` donde se guarden las imágenes.
+## Metodologia de Treball
+
+> De tota manera, els equips seran transversals i ens podrem anar ajudant entre nosaltres. A més, en tot moment estarem informats de les tasques que està duent a terme cadascú.
