@@ -1,5 +1,11 @@
 <?php
-// delete.php
+
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 
 // 1. Cargamos configuración segura
 require_once 'db_config.php';

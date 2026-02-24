@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 // Página principal del servicio. Aquí se verán las imágenes subidas a Extagram
 <html lang="es">
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <head>
     <meta charset="UTF-8">
     <title>Extagram-G1</title>

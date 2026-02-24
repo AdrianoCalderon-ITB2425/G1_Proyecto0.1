@@ -4,6 +4,13 @@
 
 // Llamada de S2 Y S3 a Extraer_BBDD para obtener las imágenes subidas
 
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
 require_once 'db_config.php';
 
 $conn = new mysqli($servername, $username, $password, $dbname);

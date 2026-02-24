@@ -1,6 +1,11 @@
 <?php
 // Se establecen las diferentes formas de extraer la imágen. Se prioriza leer directamente del directorio local, pero existe la opción de buscar directamente en la base de datos en caso de pérdida.
 
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
 require 'db_config.php';
 
 // 1. Validamos que nos pasen el nombre de la foto
