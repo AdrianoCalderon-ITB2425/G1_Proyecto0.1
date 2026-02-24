@@ -1,4 +1,4 @@
-# Acta de Sprint 3 Review | 23-02-2026
+# Acta de Sprint 3 Review | 17-02-2026
 
 En la jornada de hoy, se ha recibido la evaluación del Sprint junto con las observaciones y aspectos a corregir. Tras analizar los puntos de mejora y definir la estrategia de resolución, el equipo ha procedido a la distribución de las siguientes tareas:
 
@@ -16,3 +16,4 @@ Una vez validadas las correcciones anteriores, el equipo se enfocará prioritari
 * Restauración de servicios en S5 y S6.
 * Optimización de la navegación y visualización de Sprints en la página principal.
 * Actualización del histórico de Sprints en el repositorio.
+
