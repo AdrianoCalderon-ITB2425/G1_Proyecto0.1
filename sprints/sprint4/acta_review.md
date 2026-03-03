@@ -11,3 +11,5 @@ Finalmente, se realizaron las siguientes modificaciones:
 ### Pendiente
 
 * Configuración de `iptables` en S1.
+* Definición de reglas para el Firewall.
+* Documentación de la configuración del Firewall y del WAF.
