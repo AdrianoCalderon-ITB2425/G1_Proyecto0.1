@@ -1,4 +1,4 @@
-# 🛡️ Implementación de WAF ModSecurity - Sprint 4 (Seguridad)
+# Implementación de WAF ModSecurity - Sprint 4 (Seguridad)
 
 En este documento se detallan los pasos técnicos seguidos para proteger la infraestructura de la aplicación **Extagram** mediante la implementación de un cortafuegos de aplicaciones web (WAF) en el nodo de balanceo (S1).
 
