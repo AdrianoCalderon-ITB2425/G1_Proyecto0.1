@@ -201,17 +201,26 @@ http://192.168.10.30:5601
 
 Resultado esperado: se carga la interfaz de Kibana.
 
-![Prueba - Kibana accesible desde red interna](../../imagenes/firewall6.png)
+![Prueba - Kibana accesible desde red interna](../../imagenes/elastic.png)
 
 ---
 
 ### 3.5 Prueba — Acceso bloqueado desde fuera de la red
 
-Desde una máquina externa (fuera de `192.168.10.0/24`):
+Se realizaron dos pruebas desde máquinas con IPs diferentes para demostrar el comportamiento del firewall:
+
+**Desde 192.168.20.40** (red externa, fuera del rango permitido):
 ```bash
 curl --max-time 5 http://192.168.10.30:5601
 ```
+Resultado: `Connection timed out` — el firewall bloquea el acceso. 
 
-Resultado esperado: `Operation timed out`
+**Desde 192.168.10.40** (red interna `192.168.10.0/24`):
+```bash
+curl --max-time 5 http://192.168.10.30:5601
+```
+Resultado: conexión permitida, sin timeout. 
 
-![Prueba - Kibana bloqueado desde exterior](../../imagenes/firewall7.png)
+Esto demuestra que el firewall distingue correctamente entre redes, permitiendo solo el acceso desde `192.168.10.0/24`.
+
+![Prueba - Kibana bloqueado desde exterior y permitido desde red interna](../../imagenes/firewall8.png)
