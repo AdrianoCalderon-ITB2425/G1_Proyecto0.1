@@ -88,7 +88,11 @@ Ejecutado desde una máquina externa de la red:
 curl -L -k http://192.168.10.30
 ```
 
-Resultado: se recibe el HTML de la página de login de Extagram. 
+Resultado: se recibe el HTML de la página de login de Extagram.
+
+![Prueba 1 - Web accesible](../../imagenes/firewall1.png)
+
+---
 
 ### Prueba 2 — Puertos no permitidos están bloqueados
 ```bash
@@ -97,22 +101,32 @@ curl --max-time 5 http://192.168.10.30:3306
 ```
 
 Resultados:
-- Puerto 8080: `Connection refused` 
-- Puerto 3306: `Operation timed out` 
+- Puerto 8080: `Connection refused`
+- Puerto 3306: `Operation timed out`
+
+![Prueba 2 - Puertos bloqueados](../../imagenes/firewall2.png)
+
+---
 
 ### Prueba 3 — Ping funciona desde el exterior
 ```bash
 ping -c 3 192.168.10.30
 ```
 
-Resultado: 3 paquetes enviados, 3 recibidos, 0% packet loss. 
+Resultado: 3 paquetes enviados, 3 recibidos, 0% packet loss.
+
+![Prueba 3 - Ping](../../imagenes/firewall3.png)
+
+---
 
 ### Prueba 4 — Comunicación interna entre contenedores
 ```bash
 sudo docker exec -it s2-app ping -c 3 s1-proxy
 ```
 
-Resultado: comunicación interna funcionando correctamente, 0% packet loss. 
+Resultado: comunicación interna funcionando correctamente, 0% packet loss.
+
+![Prueba 4 - Comunicación interna](../../imagenes/firewall4.png)
 
 ---
 
@@ -149,10 +163,34 @@ num   pkts bytes target   prot opt in  out  source            destination
 2        0     0 DROP     tcp  --  *   *    0.0.0.0/0         0.0.0.0/0    tcp dpt:5601
 ```
 
-### 3.3 Guardar las reglas para que persistan tras reinicios
+![Prueba - Reglas DOCKER-USER](../../imagenes/firewall5.png)
+
+---
+
+### 3.3 Script de persistencia
+
+Las reglas de la cadena DOCKER-USER se pierden cuando Docker se reinicia porque Docker regenera sus cadenas al arrancar. Para que las reglas persistan automáticamente se crea un script que se ejecuta cada vez que la interfaz de red sube.
 ```bash
-sudo sh -c "iptables-save > /etc/iptables/rules.v4"
+sudo mkdir -p /etc/network/if-up.d/
+
+sudo tee /etc/network/if-up.d/iptables-kibana << 'EOF'
+#!/bin/bash
+# Esperar a que Docker esté listo
+sleep 10
+
+# Eliminar reglas anteriores del 5601 si existen
+iptables -D DOCKER-USER -p tcp --dport 5601 -s 192.168.10.0/24 -j ACCEPT 2>/dev/null
+iptables -D DOCKER-USER -p tcp --dport 5601 -j DROP 2>/dev/null
+
+# Aplicar reglas en orden correcto
+iptables -A DOCKER-USER -p tcp --dport 5601 -s 192.168.10.0/24 -j ACCEPT
+iptables -A DOCKER-USER -p tcp --dport 5601 -j DROP
+EOF
+
+sudo chmod +x /etc/network/if-up.d/iptables-kibana
 ```
+
+---
 
 ### 3.4 Prueba — Acceso a Kibana desde la red interna
 
@@ -161,7 +199,11 @@ Desde cualquier máquina de la red `192.168.10.0/24`, abre el navegador y accede
 http://192.168.10.30:5601
 ```
 
-Resultado esperado: se carga la interfaz de Kibana. 
+Resultado esperado: se carga la interfaz de Kibana.
+
+![Prueba - Kibana accesible desde red interna](../../imagenes/firewall6.png)
+
+---
 
 ### 3.5 Prueba — Acceso bloqueado desde fuera de la red
 
@@ -170,4 +212,6 @@ Desde una máquina externa (fuera de `192.168.10.0/24`):
 curl --max-time 5 http://192.168.10.30:5601
 ```
 
-Resultado esperado: `Operation timed out` 
+Resultado esperado: `Operation timed out`
+
+![Prueba - Kibana bloqueado desde exterior](../../imagenes/firewall7.png)
